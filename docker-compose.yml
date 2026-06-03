@@ -15,7 +15,67 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+    networks:
+      - shadowaudit-net
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: shadowaudit-gateway
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - REDIS_URL=redis://redis:6379
+      - REDIS_QUEUE_KEY=shadowaudit:queue
+      - REDIS_RESULTS_CHANNEL=shadowaudit:results
+      - CORS_ORIGIN=http://localhost:3000
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - shadowaudit-net
+    restart: always
+
+  audit-worker:
+    build:
+      context: ./audit-worker
+      dockerfile: Dockerfile
+    container_name: shadowaudit-worker
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - REDIS_QUEUE_KEY=shadowaudit:queue
+      - REDIS_RESULTS_CHANNEL=shadowaudit:results
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - shadowaudit-net
+    restart: always
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: shadowaudit-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-gateway
+    networks:
+      - shadowaudit-net
+    restart: always
 
 volumes:
   redis_data:
     driver: local
+
+networks:
+  shadowaudit-net:
+    driver: bridge
