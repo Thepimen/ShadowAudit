@@ -123,3 +123,18 @@ Authentication payloads must target the Ingestion endpoint on port `4000`:
   "target": "scanme.nmap.org"
 }
 ```
+
+---
+
+## ⚡ Custom Development, Commercial Support & Deployment
+
+Need a custom version of **ShadowAudit**, a distributed microservices architecture with **Docker Compose & Redis task queues**, Python worker pipelines, or a scalable **Node.js / TypeScript API Gateway** deployed on your Linux infrastructure?
+
+I offer fast-turnaround software engineering services and custom proposals on Fiverr:
+
+[![Hire on Fiverr - Docker, Microservices & Redis Queues](https://img.shields.io/badge/Fiverr-Docker,_Microservices_%26_Redis_Queues_(From_$35)-00b22d?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/thepimen/dockerize-applications-and-build-microservices-on-linux-servers)
+[![Hire on Fiverr - Scalable Node.js & TypeScript APIs](https://img.shields.io/badge/Fiverr-Scalable_Node.js_%26_TypeScript_REST_APIs_(From_$35)-1dbf73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/thepimen/develop-scalable-rest-apis-with-nodejs-typescript-or-spring-boot)
+
+* **24-Hour Express Delivery available** for urgent Docker setups, microservices debugging, and backend API engineering.
+* **Direct Engineering Portfolio & Services:** [luislazaro-dev.netlify.app/solutions](https://luislazaro-dev.netlify.app/solutions)
+
